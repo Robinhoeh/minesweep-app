@@ -26,6 +26,20 @@ console.log (generatePlayerBoard(3, 3) );//calling this will display the size of
 
 
 
+const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
+	let board = [];
+	for (let i = 0; i < numberOfRows; i++) {
+		let row = [];
+		for (let j = 0; j < numberOfColumns; j++) {
+			row.push(null);//replaced with NULL
+		}
+		board.push(row);
+	}
+	return board;
+}
+
+
+
 
 
 
