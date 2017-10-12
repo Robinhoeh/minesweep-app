@@ -1,17 +1,3 @@
-const generatePlayerBoard = (numberOfRows,numberOfColumns) => {
-	let board = [];//represents the game board
-		for (let i = 0; i < numberOfRows; i++) {
-			let row = [];
-				for (let j = 0; j < numberOfColumns; j++) {
-				row.push(' ');
-				}
-				board.push(row);
-		}
-}
-
-generatePlayerBoard(3, 3);//calling this will display the size of board desired
-
-
 // for (every row we want to make) {
 //   create a new row
 //   for (every column want to make) {
@@ -19,6 +5,26 @@ generatePlayerBoard(3, 3);//calling this will display the size of board desired
 //   }
 //   push the new row into the list of rows for the board
 // }
+
+
+const generatePlayerBoard = (numberOfRows,numberOfColumns) => {
+	let board = [];// new empty array 
+	for (let i = 0; i < numberOfRows; i++) {//each time this loop runs - new row array created
+		let row = [];//new empty array 
+		for (let j = 0; j < numberOfColumns; j++) {//creates all the columns for previous row created
+			row.push(' ');//each space represents a column - push as many spaces to the row as number of columns that are passed
+		}
+		board.push(row);//pushing row array to board array once column loop is complete
+	}
+	return board;
+}
+
+console.log (generatePlayerBoard(3, 3) );//calling this will display the size of board desired
+
+
+
+
+
 
 
 
