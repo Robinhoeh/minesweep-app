@@ -19,11 +19,11 @@ const generatePlayerBoard = (numberOfRows,numberOfColumns) => {
 	return board;
 }
 
-console.log (generatePlayerBoard(3, 3) );//calling this will display the size of board desired
+console.log( generatePlayerBoard(3, 3) );//calling this will display the size of board desired
 
 
 
-
+//====Same code as above, dynamically generates bomb board===
 
 
 const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
@@ -35,11 +35,21 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 		}
 		board.push(row);
 	}
+
+	let numberOfBombsPlaced = 0;
+	if (numberOfBombsPlaced < numberOfBombs) {
+		let randomRowIndex = Math.random() * numberOfRows;
+	}
+
+
 	return board;
 }
 
 
+console.log( generateBombBoard(3, 21, 7) );
 
+
+//=====Randomly Place Bombs on the Bomb board=====
 
 
 
