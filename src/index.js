@@ -36,11 +36,12 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 		board.push(row);
 	}
 
-	let numberOfBombsPlaced = 0;
-	if (numberOfBombsPlaced < numberOfBombs) {
-		let randomRowIndex = Math.random() * numberOfRows;
+	for (let numberOfBombsPlaced = 0; numberOfBombsPlaced < numberOfBombs; numberOfBombsPlaced++) {
+		let randomRowIndex = Math.floor( Math.random() * numberOfRows );
+		let randomColumnIndex = Math.floor( Math.random() * numberOfColums );
+		board [randomRowIndex][randomColumnIndex] = 'B';
 	}
-
+	}
 
 	return board;
 }
