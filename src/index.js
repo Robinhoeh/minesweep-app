@@ -47,9 +47,6 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 	return board;
 }
 
-
-
-
 console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and places randomly
 
 
@@ -71,6 +68,53 @@ const printBoard = (board) => {//board is new param
 
 //printBoard is joining each space with a pipe, 
 //then joining each row to the other rows depending on the amount of columns?
+
+let playerBoard = generatePlayerBoard(3, 4);
+let bombBoard = generateBombBoard(3, 4, 5);
+
+
+
+console.log('Player Board: ');
+console.log( printBoard(playerBoard) );
+console.log('Bomb Board: ');
+console.log( printBoard(bombBoard) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
