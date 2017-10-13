@@ -63,7 +63,7 @@ This is essentially whats happening in the function below
 
 
 const printBoard = (board) => {//board is new param
-	console.log( board.map(row => row.join(' | ') ).join('/n') );//map over row array and inject | to each row
+	console.log( board.map(row => row.join(' | ') ).join('\n') );//map over row array and inject | to each row
 }// slash n is a line break
 
 //printBoard is joining each space with a pipe, 
