@@ -36,21 +36,28 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 		board.push(row);
 	}
 
+	//potential to overlap existing bombs can be fixes using control flow
+
 	for (let numberOfBombsPlaced = 0; numberOfBombsPlaced < numberOfBombs; numberOfBombsPlaced++) {
-		let randomRowIndex = Math.floor( Math.random() * numberOfRows );
-		let randomColumnIndex = Math.floor( Math.random() * numberOfColums );
-		board [randomRowIndex][randomColumnIndex] = 'B';
-	}
+		let randomRowIndex = Math.floor( Math.random() * numberOfRows );//Generate a random row index
+		let randomColumnIndex = Math.floor( Math.random() * numberOfColums );//Generate a random column index
+		board [randomRowIndex][randomColumnIndex] = 'B';//Place the bomb at that row and columns
+		numberOfBombsPlaced ++;//increment number of bombs places
+		}
 	}
 
 	return board;
 }
 
 
-console.log( generateBombBoard(3, 21, 7) );
+console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and places randomly
 
 
-//=====Randomly Place Bombs on the Bomb board=====
+const printBoard = (board) => {
+	board.map(row);
+}
+	console.log( board.join(' | ') );
+}
 
 
 
