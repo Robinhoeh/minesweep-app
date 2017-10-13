@@ -40,24 +40,38 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 
 	for (let numberOfBombsPlaced = 0; numberOfBombsPlaced < numberOfBombs; numberOfBombsPlaced++) {
 		let randomRowIndex = Math.floor( Math.random() * numberOfRows );//Generate a random row index
-		let randomColumnIndex = Math.floor( Math.random() * numberOfColums );//Generate a random column index
+		let randomColumnIndex = Math.floor( Math.random() * numberOfColumns );//Generate a random column index
 		board [randomRowIndex][randomColumnIndex] = 'B';//Place the bomb at that row and columns
 		numberOfBombsPlaced ++;//increment number of bombs places
-		}
 	}
-
 	return board;
 }
+
+
 
 
 console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and places randomly
 
 
-const printBoard = (board) => {
-	board.map(row);
-}
-	console.log( board.join(' | ') );
-}
+
+/*
+
+console.log(board[0].join(' | '));
+console.log(board[1].join(' | '));
+console.log(board[2].join(' | '));
+
+This is essentially whats happening in the function below
+
+*/
+
+
+const printBoard = (board) => {//board is new param
+	console.log( board.map(row => row.join(' | ') ).join('/n') );//map over row array and inject | to each row
+}// slash n is a line break
+
+//printBoard is joining each space with a pipe, 
+//then joining each row to the other rows depending on the amount of columns?
+
 
 
 
