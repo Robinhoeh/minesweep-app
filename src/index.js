@@ -43,13 +43,27 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 		let randomColumnIndex = Math.floor( Math.random() * numberOfColumns );//Generate a random column index
 		if (board [randomRowIndex][randomColumnIndex] !== 'B') {//if there are no bombs placed
 			board [randomRowIndex][randomColumnIndex] = 'B';//Place the bomb at that row and columns
-			numberOfBombsPlaced ++;//increment number of bombs places
+			numberOfBombsPlaced ++;//increment number of bombs placed
 		}
 	}
 	return board;
 }
 
 console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and places randomly
+
+
+const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
+	const neighbourOffSets = [ 
+	[], 
+	[], 
+	[], 
+	[], 
+	[], 
+	[], 
+	[], 
+	[], 
+	];
+}
 
 
 
