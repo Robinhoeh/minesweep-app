@@ -41,8 +41,10 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 	for (let numberOfBombsPlaced = 0; numberOfBombsPlaced < numberOfBombs; numberOfBombsPlaced++) {
 		let randomRowIndex = Math.floor( Math.random() * numberOfRows );//Generate a random row index
 		let randomColumnIndex = Math.floor( Math.random() * numberOfColumns );//Generate a random column index
-		board [randomRowIndex][randomColumnIndex] = 'B';//Place the bomb at that row and columns
-		numberOfBombsPlaced ++;//increment number of bombs places
+		if (board [randomRowIndex][randomColumnIndex] !== 'B') {//if there are no bombs placed
+			board [randomRowIndex][randomColumnIndex] = 'B';//Place the bomb at that row and columns
+			numberOfBombsPlaced ++;//increment number of bombs places
+		}
 	}
 	return board;
 }
@@ -67,7 +69,7 @@ const printBoard = (board) => {//board is new param
 }// slash n is a line break
 
 //printBoard is joining each space with a pipe, 
-//then joining each row to the other rows depending on the amount of columns?
+//then joining each row to the other rows depending on the amount of columns
 
 let playerBoard = generatePlayerBoard(3, 4);
 let bombBoard = generateBombBoard(3, 4, 5);
