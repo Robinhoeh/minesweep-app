@@ -54,7 +54,7 @@ console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and
 
 
 
-//=======Displaying number of bobs adjacent to flipped tile
+//=======Displaying number of bombs adjacent to flipped tile
 
 
 
@@ -69,17 +69,26 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
 	[1, 0], 
 	[1, 1], 
 	];
-}
+
 
 
 const numberOfRows = bombBoard.length//retrieve dimensions of the board - in case BOMB is on edge of board
 const numberOfColumns = bombBoard[0].length;//same as above - find number of columns - [0] takes you outside of the initial array
 let numberOfBombs = 0;//stores number of bombs ADJACENT to flipped tile
 
-neighbourOffSets.forEach(offSet => {//checkes tiles around the flipped tile
+neighbourOffSets.forEach(offSet => {//runs through each nested array in neighborOffset ie [-1, -1]
 	const neighbourRowIndex = rowIndex + offSet[0];
 }); 
+}
 
+/*
+
+
+Then for each offset, we are adding the rowIndex and the offset[0], which is the first value in each offset 
+(for example the first offset would be -1) 
+Then we are storing it the sum in the neighborRowIndex value
+
+So the first one would evaluate to rowIndex + (-1)  or just rowIndex - 1, which means one cell to the left of rowIndex*/
 
 
 //==========printing game board with randomly place bombs
