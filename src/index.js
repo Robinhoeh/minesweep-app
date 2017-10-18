@@ -23,7 +23,7 @@ console.log( generatePlayerBoard(3, 3) );//calling this will display the size of
 
 
 
-//====Same code as above, dynamically generates bomb board===
+//=========Same code as above, dynamically generates bomb board===
 
 
 const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
@@ -56,9 +56,11 @@ console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and
 
 //=======Displaying number of bobs adjacent to flipped tile
 
+
+
 const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
-	const neighbourOffSets = [ //offset by row then column relative to BOMB
-	[-1, -1], 
+	const neighbourOffSets = [ 
+	[-1, -1], //offset by row then column relative to BOMB
 	[-1, 0], 
 	[-1, 1], 
 	[0, -1], 
@@ -74,6 +76,13 @@ const numberOfRows = bombBoard.length//retrieve dimensions of the board - in cas
 const numberOfColumns = bombBoard[0].length;//same as above - find number of columns - [0] takes you outside of the initial array
 let numberOfBombs = 0;//stores number of bombs ADJACENT to flipped tile
 
+neighbourOffSets.forEach(offSet => {//checkes tiles around the flipped tile
+	const neighbourRowIndex = rowIndex + offSet[0];
+}); 
+
+
+
+//==========printing game board with randomly place bombs
 
 /*
 
@@ -84,9 +93,6 @@ console.log(board[2].join(' | '));
 This is essentially whats happening in the function below
 
 */
-
-
-//==========printing game board with randomly place bombs
 
 const printBoard = (board) => {//board is new param
 	console.log( board.map(row => row.join(' | ') ).join('\n') );//map over row array and inject | to each row
