@@ -58,7 +58,7 @@ console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and
 
 
 
-const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
+const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 	const neighbourOffSets = [ 
 		[-1, -1], //offset by row then column relative to BOMB
 		[-1, 0], 
@@ -77,18 +77,18 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
 	let numberOfBombs = 0;//stores number of bombs ADJACENT to flipped tile
 
 
-	//Below provides position of the neighboring squares
+	//Below provides position of the neighbouring squares
 
 
 	/*
-it's finding all the potential neighbors of a tile and then 
-checking to see if there's bombs on those neighbors and keeping track of that in numberOfBombs.
+it's finding all the potential neighbours of a tile and then 
+checking to see if there's bombs on those neighbours and keeping track of that in numberOfBombs.
 
-neighbourOffSets stores all the potential neighbors of a tile (8 possible), but some of those 
-neighbors might not be valid because the tile might be on an edge for example.
+neighbourOffSets stores all the potential neighbours of a tile (8 possible), but some of those 
+neighbours might not be valid because the tile might be on an edge for example.
 
-So that forEach needs to check to see if the neighbor is valid before seeing if there's a bomb 
-stored on that neighbor.
+So that forEach needs to check to see if the neighbour is valid before seeing if there's a bomb 
+stored on that neighbour.
 
 
 
@@ -96,17 +96,17 @@ stored on that neighbor.
 
 
 
-	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighborOffset ie [-1, -1]
+	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1]
 	    const neighbourRowIndex = rowIndex + offSet[0];//
 	    const neighbourColumnIndex = columnIndex + offset[1];//Gets index position of column and off set position
 	if (//checking for legal and valid tiles
-	neighborRowIndex >= 0 &&
-	neighborRowIndex <= numberOfRows &&
+	neighbourRowIndex >= 0 &&
+	neighbourRowIndex <= numberOfRows &&
 	neighbourColumnIndex >= 0 &&
 	neighbourColumnIndex <= numberOfColumns
 	)
 	{
-	if (bombBoard[neighborRowIndex][0]) == 'B' {
+	if (bombBoard[neighbourRowIndex][0]) == 'B' {
 	numberOfBombs++;
 	}
 	}
@@ -117,24 +117,24 @@ stored on that neighbor.
 
 
 
-	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighborOffset ie [-1, -1]
+	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1]
 		const neighbourRowIndex = rowIndex + offSet[0];//
 		const neighbourColumnIndex = columnIndex + offSet[1];//Gets index position of column and off set position
 		if (//checking for legal and valid tiles
-			neighborRowIndex >= 0 && 
-			neighborRowIndex < numberOfRows && 
+			neighbourRowIndex >= 0 && 
+			neighbourRowIndex < numberOfRows && 
 			neighbourColumnIndex >= 0 && 
 			neighbourColumnIndex < numberOfColumns
 		) 
 		{
-		if (bombBoard[neighborRowIndex][neighbourColumnIndex]) == 'B' {
+		if (bombBoard[neighbourRowIndex][neighbourColumnIndex]) == 'B' {
 			numberOfBombs++;
 		}
 		}
 		return numberOfBombs;
 	});
 
-//Check if neighboring tiles are off grid or don't exist
+//Check if neighbouring tiles are off grid or don't exist
 
 }
 
@@ -147,7 +147,7 @@ const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
 
 Then for each offset, we are adding the rowIndex and the offset[0], which is the first value in each offset 
 (for example the first offset would be -1) 
-Then we are storing it the sum in the neighborRowIndex value
+Then we are storing it the sum in the neighbourRowIndex value
 
 So the first one would evaluate to rowIndex + (-1)  or just rowIndex - 1, which means one cell to the left of rowIndex*/
 
