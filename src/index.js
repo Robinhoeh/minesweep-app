@@ -79,6 +79,11 @@ let numberOfBombs = 0;//stores number of bombs ADJACENT to flipped tile
 neighbourOffSets.forEach(offSet => {//runs through each nested array in neighborOffset ie [-1, -1]
 	const neighbourRowIndex = rowIndex + offSet[0];
 }); 
+
+neighbourOffSets.forEach(offSet => {
+	const neighbourColumnIndex = columnIndex + offset[1];
+}
+
 }
 
 /*
