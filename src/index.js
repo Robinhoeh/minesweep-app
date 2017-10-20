@@ -93,19 +93,43 @@ stored on that neighbor.
 
 
 	*/
+
+
+
 	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighborOffset ie [-1, -1]
+	    const neighbourRowIndex = rowIndex + offSet[0];//
+	    const neighbourColumnIndex = columnIndex + offset[1];//Gets index position of column and off set position
+	if (//checking for legal and valid tiles
+	neighborRowIndex >= 0 &&
+	neighborRowIndex <= numberOfRows &&
+	neighbourColumnIndex >= 0 &&
+	neighbourColumnIndex <= numberOfColumns
+	)
+	{
+	if (bombBoard[neighborRowIndex][0]) == 'B' {
+	numberOfBombs++;
+	}
+	}
+	return numberOfBombs;
+	});
+
+
+
+
+
+	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighborOffset ie [-1, -1]
+		const neighbourRowIndex = rowIndex + offSet[0];//
+		const neighbourColumnIndex = columnIndex + offSet[1];//Gets index position of column and off set position
 		if (//checking for legal and valid tiles
 			neighborRowIndex >= 0 && 
-			neighborRowIndex <= numberOfRows && 
+			neighborRowIndex < numberOfRows && 
 			neighbourColumnIndex >= 0 && 
-			neighbourColumnIndex <= numberOfColumns
+			neighbourColumnIndex < numberOfColumns
 		) 
 		{
-			if (bombBoard[neighborRowIndex][0]) == 'B' {
-				numberOfBombs++;
-			}
-			const neighbourRowIndex = rowIndex + offSet[0];//
-			const neighbourColumnIndex = columnIndex + offset[1];//Gets index position of column and off set position
+		if (bombBoard[neighborRowIndex][neighbourColumnIndex]) == 'B' {
+			numberOfBombs++;
+		}
 		}
 		return numberOfBombs;
 	});
@@ -115,7 +139,7 @@ stored on that neighbor.
 }
 
 const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
-	
+
 }
 
 /*
