@@ -80,7 +80,7 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 	//Below provides position of the neighbouring squares
 
 
-	//nehgbouroffSets function is count the number of bombs adjacent to a given cell
+	//nehgbouroffSets function is counting the number of bombs adjacent to a given cell
 
 	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1] -  compute the col and row indices for the neighbor you're trying to check
 		const neighbourRowIndex = rowIndex + offSet[0];//store the row position
@@ -104,12 +104,22 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 
 }
 
-//flipTile is checking two thing:
+
+//The goal of flipTile() is to allow the player to flip a tile and to update that tile accordingly
+//flipTile is checking two things:
 //If the specified tile has already been flipped
 //If the specified tile has a bomb in it
+//Otherwise, that tile should be updated with the number of neighboring bombs
 
 const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
-
+	if (playerBoard[rowIndex][columnIndex] !== ' ') {
+		alert('This tile has already been flipped');
+	} else if(bombBoard[rowIndex][columnIndex] === 'B') {
+		playerBoard[rowIndex][columnIndex] = 'B';
+	} else {
+		playerBoard = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);
+	}
+	return;
 }
 
 /*
