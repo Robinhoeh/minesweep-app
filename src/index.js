@@ -93,7 +93,7 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 			neighbourColumnIndex < numberOfColumns
 		) 
 		{
-		if (bombBoard[neighbourRowIndex][neighbourColumnIndex]) == 'B' {//Checks if neighbour of CURRENT cell has a bomb
+		if (bombBoard[neighbourRowIndex][neighbourColumnIndex] === 'B' ) {//Checks if neighbour of CURRENT cell has a bomb
 			numberOfBombs++;//if YES - add +1 to bombCount
 		}
 		}
@@ -123,7 +123,6 @@ const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
 }
 
 /*
-
 
 Then for each offset, we are adding the rowIndex and the offset[0], which is the first value in each offset 
 (for example the first offset would be -1) 
@@ -162,8 +161,11 @@ console.log('Bomb Board: ');
 console.log( printBoard(bombBoard) );
 
 
+flipTile(playerBoard, bombBoard, 1, 0);//4 params cuz fliptile takes 4 above
 
+console.log('Updated player board: ');
 
+printBoard(playerBoard);
 
 
 
