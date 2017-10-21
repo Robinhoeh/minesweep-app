@@ -117,7 +117,8 @@ const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
 	} else if(bombBoard[rowIndex][columnIndex] === 'B') {
 		playerBoard[rowIndex][columnIndex] = 'B';
 	} else {
-		playerBoard = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);
+		playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);
+		//so, if a cell is not a bomb, it should be the number of bombs in it's vicinity
 	}
 	return;
 }
@@ -131,7 +132,9 @@ Then we are storing it the sum in the neighbourRowIndex value
 So the first one would evaluate to rowIndex + (-1)  or just rowIndex - 1, which means one cell to the left of rowIndex*/
 
 
-//==========printing game board with randomly place bombs
+
+
+//==========printing game board with randomly placed bombs
 
 /*
 
@@ -155,104 +158,15 @@ let bombBoard = generateBombBoard(3, 4, 5);
 
 
 
-console.log('Player Board: ');
-console.log( printBoard(playerBoard) );
-console.log('Bomb Board: ');
-console.log( printBoard(bombBoard) );
+// console.log('Player Board: ');
+// console.log( printBoard(playerBoard) );
+// console.log('Bomb Board: ');
+// console.log( printBoard(bombBoard) );
 
 
-flipTile(playerBoard, bombBoard, 1, 0);//4 params cuz fliptile takes 4 above
+flipTile(playerBoard, bombBoard, 0, 0);//4 params cuz fliptile takes 4 above
 
 console.log('Updated player board: ');
 
 printBoard(playerBoard);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//====Nested for loops====
-
-//the second for loop iterates through the individual elements 
-//in the nested arrays and the outer loops through each array as a whole element
-
-/*
-
-1.
-
-Instead of creating one singular game board, we're going to create two: one board for 
-the player's guesses and another board that will hold the actual bomb locations. 
-Later, you'll write code so that they can communicate with each other.
-
-*/
-
-
-
-
-
-// 	const printBoard = (board) => {		//these are placed inside each item
-// 	console.log('Current board: ');
-// 	console.log(board[0].join(' | ') );
-// 	console.log(board[1].join(' | ') );
-// 	console.log(board[2].join(' | ') );
-
-// };
-
-
-// let board = [ //this is the blank board
-
-// 	[' ', ' ', ' '], 
-// 	[' ', ' ', ' '], 
-// 	[' ', ' ', ' '] 
-
-// ];
-
-// console.log( printBoard (board) );
-
-
-// // console.log(board);	//dont need to see empty array with .join() now
-
-// board[0][1] = '1'; 
-// board[2][2] = 'B';
-
-// console.log( printBoard(board) );
-
-// Above was first two sections of project - - From here up is starting fresh 
-
-
-
-
-
 
