@@ -81,6 +81,8 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 
 
 	/*
+For any given tile we want to check to see how many bombs are touching it
+
 it's finding all the potential neighbours of a tile and then 
 checking to see if there's bombs on those neighbours and keeping track of that in numberOfBombs.
 
@@ -101,9 +103,9 @@ stored on that neighbour.
 	    const neighbourColumnIndex = columnIndex + offset[1];//Gets index position of column and off set position
 	if (//checking for legal and valid tiles
 	neighbourRowIndex >= 0 &&
-	neighbourRowIndex <= numberOfRows &&
+	neighbourRowIndex < numberOfRows &&
 	neighbourColumnIndex >= 0 &&
-	neighbourColumnIndex <= numberOfColumns
+	neighbourColumnIndex < numberOfColumns
 	)
 	{
 	if (bombBoard[neighbourRowIndex][0]) == 'B' {
