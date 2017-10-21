@@ -59,7 +59,7 @@ console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and
 
 
 const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
-	const neighbourOffSets = [ 
+	const neighbourOffSets = [ //8 possible directions you could use
 		[-1, -1], //offset by row then column relative to BOMB
 		[-1, 0], 
 		[-1, 1], 
@@ -80,37 +80,24 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 	//Below provides position of the neighbouring squares
 
 
-	/*
-For any given tile we want to check to see how many bombs are touching it
+	//nehgbouroffSets function is count the number of bombs adjacent to a given cell
 
-it's finding all the potential neighbours of a tile and then 
-checking to see if there's bombs on those neighbours and keeping track of that in numberOfBombs.
-
-neighbourOffSets stores all the potential neighbours of a tile (8 possible), but some of those 
-neighbours might not be valid because the tile might be on an edge for example.
-
-So that forEach needs to check to see if the neighbour is valid before seeing if there's a bomb 
-stored on that neighbour.
-
-
-
-	*/
-
-	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1]
-		const neighbourRowIndex = rowIndex + offSet[0];//
-		const neighbourColumnIndex = columnIndex + offSet[1];//Gets index position of column and off set position
-		if (//checking for legal and valid tiles
+	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1] -  compute the col and row indices for the neighbor you're trying to check
+		const neighbourRowIndex = rowIndex + offSet[0];//store the row position
+		const neighbourColumnIndex = columnIndex + offSet[1];//store index position
+		
+		if (//check if the tiles/indices are within the allowable bounds of the board
 			neighbourRowIndex >= 0 && 
 			neighbourRowIndex < numberOfRows && 
 			neighbourColumnIndex >= 0 && 
 			neighbourColumnIndex < numberOfColumns
 		) 
 		{
-		if (bombBoard[neighbourRowIndex][neighbourColumnIndex]) == 'B' {
-			numberOfBombs++;
+		if (bombBoard[neighbourRowIndex][neighbourColumnIndex]) == 'B' {//Checks if neighbour of CURRENT cell has a bomb
+			numberOfBombs++;//if YES - add +1 to bombCount
 		}
 		}
-		return numberOfBombs;
+		return numberOfBombs;//otherwise do nothing
 	});
 
 //Check if neighbouring tiles are off grid or don't exist
