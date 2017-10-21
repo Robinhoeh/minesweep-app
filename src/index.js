@@ -96,29 +96,6 @@ stored on that neighbour.
 
 	*/
 
-
-
-	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1]
-	    const neighbourRowIndex = rowIndex + offSet[0];//
-	    const neighbourColumnIndex = columnIndex + offset[1];//Gets index position of column and off set position
-	if (//checking for legal and valid tiles
-	neighbourRowIndex >= 0 &&
-	neighbourRowIndex < numberOfRows &&
-	neighbourColumnIndex >= 0 &&
-	neighbourColumnIndex < numberOfColumns
-	)
-	{
-	if (bombBoard[neighbourRowIndex][0]) == 'B' {
-	numberOfBombs++;
-	}
-	}
-	return numberOfBombs;
-	});
-
-
-
-
-
 	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1]
 		const neighbourRowIndex = rowIndex + offSet[0];//
 		const neighbourColumnIndex = columnIndex + offSet[1];//Gets index position of column and off set position
@@ -139,6 +116,10 @@ stored on that neighbour.
 //Check if neighbouring tiles are off grid or don't exist
 
 }
+
+//flipTile is checking two thing:
+//If the specified tile has already been flipped
+//If the specified tile has a bomb in it
 
 const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
 
