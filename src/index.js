@@ -86,7 +86,7 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 		const neighbourRowIndex = rowIndex + offSet[0];//store the row position
 		const neighbourColumnIndex = columnIndex + offSet[1];//store index position
 		
-		if (//check if the tiles/indices are within the allowable bounds of the board
+		if (//checks if the tiles/indices are within the allowable bounds of the board
 			neighbourRowIndex >= 0 && 
 			neighbourRowIndex < numberOfRows && 
 			neighbourColumnIndex >= 0 && 
@@ -94,7 +94,7 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 		) 
 		{
 		if (bombBoard[neighbourRowIndex][neighbourColumnIndex] === 'B' ) {//Checks if neighbour of CURRENT cell has a bomb
-			numberOfBombs++;//if YES - add +1 to bombCount
+			numberOfBombs++;//if YES - add 1 to bombCount
 		}
 		}
 		return numberOfBombs;//otherwise do nothing
@@ -160,12 +160,12 @@ const playGame = () => {
 	console.log( printBoard(playerBoard) );
 	console.log('Bomb Board: ');
 	console.log( printBoard(bombBoard) );
-}
+} 
 
 playGame();
 
 
-flipTile(playerBoard, bombBoard, 0, 0);//4 params cuz fliptile takes 4 above
+flipTile(playerBoard, bombBoard, 2, 1);//4 params cuz fliptile takes 4 above
 
 console.log('Updated player board: ');
 
