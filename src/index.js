@@ -115,7 +115,7 @@ const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {//Checking 
 	} else if(bombBoard[rowIndex][columnIndex] === 'B') {//if the flipped tile is a bomb
 		playerBoard[rowIndex][columnIndex] = 'B';//Add a bomb to the player board
 	} else {
-		playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);
+		playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);//setting guessed tile to number of surrounding bombs
 		//if a cell is not a bomb, it should be the number of bombs in it's vicinity
 	}
 	return;
