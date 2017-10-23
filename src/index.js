@@ -155,7 +155,7 @@ let playerBoard = generatePlayerBoard(3, 4);
 let bombBoard = generateBombBoard(3, 4, 5);
 
 
-const playGame() {
+const playGame = () => {
 	console.log('Player Board: ');
 	console.log( printBoard(playerBoard) );
 	console.log('Bomb Board: ');
