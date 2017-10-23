@@ -112,10 +112,10 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 //Otherwise, that tile should be updated with the number of neighboring bombs
 
 const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
-	if (playerBoard[rowIndex][columnIndex] !== ' ') {
-		alert('This tile has already been flipped');
-	} else if(bombBoard[rowIndex][columnIndex] === 'B') {
-		playerBoard[rowIndex][columnIndex] = 'B';
+	if (playerBoard[rowIndex][columnIndex] !== ' ') {//if current position of the tile has already been flipped
+		alert('This tile has already been flipped');//alert pop up
+	} else if(bombBoard[rowIndex][columnIndex] === 'B') {//if the flipped tile is a bomb
+		playerBoard[rowIndex][columnIndex] = 'B';//A...
 	} else {
 		playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);
 		//so, if a cell is not a bomb, it should be the number of bombs in it's vicinity
