@@ -99,9 +99,7 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 		}
 		return numberOfBombs;//otherwise do nothing
 	});
-
 //Check if neighbouring tiles are off grid or don't exist
-
 }
 
 
@@ -111,14 +109,14 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 //If the specified tile has a bomb in it
 //Otherwise, that tile should be updated with the number of neighboring bombs
 
-const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
+const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {//Checking position based on params called below on 167
 	if (playerBoard[rowIndex][columnIndex] !== ' ') {//if current position of the tile has already been flipped
 		alert('This tile has already been flipped');//alert pop up
 	} else if(bombBoard[rowIndex][columnIndex] === 'B') {//if the flipped tile is a bomb
-		playerBoard[rowIndex][columnIndex] = 'B';//A...
+		playerBoard[rowIndex][columnIndex] = 'B';//Add a bomb to the player board
 	} else {
 		playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);
-		//so, if a cell is not a bomb, it should be the number of bombs in it's vicinity
+		//if a cell is not a bomb, it should be the number of bombs in it's vicinity
 	}
 	return;
 }
@@ -157,11 +155,14 @@ let playerBoard = generatePlayerBoard(3, 4);
 let bombBoard = generateBombBoard(3, 4, 5);
 
 
+const playGame() {
+	console.log('Player Board: ');
+	console.log( printBoard(playerBoard) );
+	console.log('Bomb Board: ');
+	console.log( printBoard(bombBoard) );
+}
 
-// console.log('Player Board: ');
-// console.log( printBoard(playerBoard) );
-// console.log('Bomb Board: ');
-// console.log( printBoard(bombBoard) );
+playGame();
 
 
 flipTile(playerBoard, bombBoard, 0, 0);//4 params cuz fliptile takes 4 above
