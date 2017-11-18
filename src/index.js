@@ -38,18 +38,21 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 
 	//potential to overlap existing bombs can be fixes using control flow
 
-	for (let numberOfBombsPlaced = 0; numberOfBombsPlaced < numberOfBombs; numberOfBombsPlaced++) {
-		let randomRowIndex = Math.floor( Math.random() * numberOfRows );//Generate a random row index
-		let randomColumnIndex = Math.floor( Math.random() * numberOfColumns );//Generate a random column index
-		if (board [randomRowIndex][randomColumnIndex] !== 'B') {//if there are no bombs placed
-			board [randomRowIndex][randomColumnIndex] = 'B';//Place the bomb at that row and columns
-			numberOfBombsPlaced ++;//increment number of bombs placed
+	for (let numberOfBombsPlaced = 0; 
+			numberOfBombsPlaced < numberOfBombs; 
+			numberOfBombsPlaced++) {
+
+			let randomRowIndex = Math.floor( Math.random() * numberOfRows );//Generate a random row index
+			let randomColumnIndex = Math.floor( Math.random() * numberOfColumns );//Generate a random column index
+			if (board [randomRowIndex][randomColumnIndex] !== 'B') {//if there are no bombs placed
+				board [randomRowIndex][randomColumnIndex] = 'B';//Place the bomb at that row and columns
+				numberOfBombsPlaced ++;//increment number of bombs placed by 1
+			}
 		}
-	}
 	return board;
 }
 
-console.log( generateBombBoard(3, 21, 7) );//calls function, generates bombs and places randomly
+console.log(generateBombBoard (3, 21, 7) );//calls function, generates bombs and places randomly
 
 
 
@@ -109,14 +112,14 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 //If the specified tile has a bomb in it
 //Otherwise, that tile should be updated with the number of neighboring bombs
 
-const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {//Checking position based on params called below on 167
+const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {//playerBoard will update, bombBoard will check location of bombs, rowIndex/Column are location we are flipping over
 	if (playerBoard[rowIndex][columnIndex] !== ' ') {//if current position of the tile has already been flipped
-		alert('This tile has already been flipped');//alert pop up
+		alert('This tile has already been flipped');//alert pop up - will end function OR --- return; ----
 	} else if(bombBoard[rowIndex][columnIndex] === 'B') {//if the flipped tile is a bomb
-		playerBoard[rowIndex][columnIndex] = 'B';//Add a bomb to the player board
+		playerBoard[rowIndex][columnIndex] = 'B';//Place bomb to the player board
 	} else {
 		playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);//setting guessed tile to number of surrounding bombs
-		//if a cell is not a bomb, it should be the number of bombs in it's vicinity
+		//if a cell is not a bomb, it should place the number of bombs on playerBoard
 	}
 	return;
 }
