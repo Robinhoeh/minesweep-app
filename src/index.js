@@ -85,11 +85,11 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 
 	//nehgbouroffSets function is counting the number of bombs adjacent to a given cell
 
-	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1] -  compute the col and row indices for the neighbor you're trying to check
+	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1] -  computes the col and row indices for the neighbor you're trying to check
 		const neighbourRowIndex = rowIndex + offSet[0];//store the row position
 		const neighbourColumnIndex = columnIndex + offSet[1];//store index position
 		
-		if (//checks if the tiles/indices are within the allowable bounds of the board
+		if (//checks if the tiles/indices are within the allowable BOUNDS of the board
 			neighbourRowIndex >= 0 && 
 			neighbourRowIndex < numberOfRows && 
 			neighbourColumnIndex >= 0 && 
@@ -97,7 +97,7 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 		) 
 		{
 		if (bombBoard[neighbourRowIndex][neighbourColumnIndex] === 'B' ) {//Checks if neighbour of CURRENT cell has a bomb
-			numberOfBombs++;//if YES - add 1 to bombCount
+			numberOfBombs++;//if YES, add 1 to bombCount
 		}
 		}
 		return numberOfBombs;//otherwise do nothing
@@ -114,7 +114,7 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 
 const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {//playerBoard will update, bombBoard will check location of bombs, rowIndex/Column are location we are flipping over
 	if (playerBoard[rowIndex][columnIndex] !== ' ') {//if current position of the tile has already been flipped
-		alert('This tile has already been flipped');//alert pop up - will end function OR --- return; ----
+		return 1;//alert('This tile has already been flipped');//alert pop up - will end function OR --- return; ----
 	} else if(bombBoard[rowIndex][columnIndex] === 'B') {//if the flipped tile is a bomb
 		playerBoard[rowIndex][columnIndex] = 'B';//Place bomb to the player board
 	} else {
