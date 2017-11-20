@@ -72,6 +72,14 @@ class Board{
 		return this._numberOfTiles !== this._numberOfBombs;//returns TRUE cuz statement is TRUTHY, otherwise false
 	}
 
+// for (every row we want to make) {
+//   create a new row
+//   for (every column want to make) {
+//     push a new empty tile ' ' onto that new row
+//   }
+//   push the new row into the list of rows for the board
+// }
+
 	static generatePlayerBoard (numberOfRows,numberOfColumns) {//static class method
 		let board = [];// new empty array 
 		for (let i = 0; i < numberOfRows; i++) {//each time this loop runs - new row array created
@@ -83,37 +91,16 @@ class Board{
 		}
 		return board;
 	}
-	console.log( generatePlayerBoard(3, 3) );//calling this will display the size of board desired
+	// console.log( generatePlayerBoard(3, 3) );//calling this will display the size of board desired
 
-}
-
-
-
-
-
-
-// for (every row we want to make) {
-//   create a new row
-//   for (every column want to make) {
-//     push a new empty tile ' ' onto that new row
-//   }
-//   push the new row into the list of rows for the board
-// }
-
-
-
-
-//=========Same code as above, dynamically generates bomb board===
-
-
-const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
-	let board = [];
-	for (let i = 0; i < numberOfRows; i++) {
-		let row = [];
-		for (let j = 0; j < numberOfColumns; j++) {
-			row.push(null);//replaced with NULL
-		}
-		board.push(row);
+	static generateBombBoard (numberOfRows, numberOfColumns, numberOfBombs) {
+		let board = [];
+		for (let i = 0; i < numberOfRows; i++) {
+			let row = [];
+			for (let j = 0; j < numberOfColumns; j++) {
+				row.push(null);//replaced with NULL
+			}
+			board.push(row);
 	}
 
 	//potential to overlap existing bombs can be fixes using control flow
@@ -132,14 +119,9 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 	return board;
 }
 
-console.log(generateBombBoard (3, 21, 7) );//calls function, generates bombs and places randomly
+// console.log(generateBombBoard (3, 21, 7) );//calls function, generates bombs and places randomly
 
-
-
-
-//=======Displaying number of bombs adjacent to flipped tile
-
-
+}
 
 
 
