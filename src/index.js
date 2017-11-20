@@ -1,3 +1,24 @@
+class Board{
+	constructor(numberOfRows, numberOfColumns, numberOfBombs) { //constructor params represent, size of board and number of bombs
+		this._numberOfBombs = numberOfBombs;
+		this._numberOfTiles = numberOfRows * numberOfColumns;//instance represents size of board and if game is over yet at end of each users turn
+		this._playerBoard = generatePlayerBoard(numberOfRows, numberOfColumns);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // for (every row we want to make) {
 //   create a new row
 //   for (every column want to make) {
@@ -5,7 +26,6 @@
 //   }
 //   push the new row into the list of rows for the board
 // }
-
 
 const generatePlayerBoard = (numberOfRows,numberOfColumns) => {
 	let board = [];// new empty array 
