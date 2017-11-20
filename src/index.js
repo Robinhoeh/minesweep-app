@@ -106,12 +106,6 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 }
 
 
-//The goal of flipTile() is to allow the player to flip a tile and to update that tile accordingly
-//flipTile is checking two things:
-//If the specified tile has already been flipped
-//If the specified tile has a bomb in it
-//Otherwise, that tile should be updated with the number of neighboring bombs
-
 const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {//playerBoard will update, bombBoard will check location of bombs, rowIndex/Column are location we are flipping over
 	if (playerBoard[rowIndex][columnIndex] !== ' ') {//if current position of the tile has already been flipped
 		return 1;//alert('This tile has already been flipped');//alert pop up - will end function OR --- return; ----
@@ -137,15 +131,6 @@ So the first one would evaluate to rowIndex + (-1)  or just rowIndex - 1, which 
 
 //==========printing game board with randomly placed bombs
 
-/*
-
-console.log(board[0].join(' | '));
-console.log(board[1].join(' | '));
-console.log(board[2].join(' | '));
-
-This is essentially whats happening in the function below
-
-*/
 
 const printBoard = (board) => {//board is new param
 	console.log( board.map(row => row.join(' | ') ).join('\n') );//map over row array and inject | to each row
@@ -173,4 +158,18 @@ flipTile(playerBoard, bombBoard, 2, 1);//4 params cuz fliptile takes 4 above
 console.log('Updated player board: ');
 
 printBoard(playerBoard);
+
+//=======Why are we incorporating class structure to this project?
+
+/*
+You had to separately create a player board and a game board manually.
+
+You had to print the board(s) every single time you wanted to see an update to the board(s).
+
+Finally, you also had to specify the player board and bomb board every time you wanted to flip a tile.
+
+Adding organized class structure will allow us to remove a lot of these manual, 
+very cumbersome gaming interactions. Most importantly, though, it will make your 
+code easier to read and build upon in the future.
+*/
 
