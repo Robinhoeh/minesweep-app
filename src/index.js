@@ -2,8 +2,8 @@ class Board{
 	constructor(numberOfRows, numberOfColumns, numberOfBombs) { //constructor params represent, size of board and number of bombs
 		this._numberOfBombs = numberOfBombs;
 		this._numberOfTiles = numberOfRows * numberOfColumns;//instance represents size of board and if game is over yet at end of each users turn
-		this._playerBoard = Board.generatePlayerBoard(numberOfRows, numberOfColumns);
-		this._bombBoard = Board.generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs);
+		this._playerBoard = Board.generatePlayerBoard(numberOfRows, numberOfColumns);//static function, call using Board.
+		this._bombBoard = Board.generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs);//static function, call using Board.
 	}
 
 	//playerBoard getter method
@@ -11,13 +11,14 @@ class Board{
 		return this._playerBoard;
 	}
 
-	flipTile = (rowIndex, columnIndex) => {//playerBoard will update, bombBoard will check location of bombs, rowIndex/Column are location we are flipping over
+//got rid of const, inside class flipTile now a method
+	flipTile (rowIndex, columnIndex) {//playerBoard and bombBoard now called in instance, rowIndex/Column are location we are flipping over
 		if (playerBoard[rowIndex][columnIndex] !== ' ') {//if current position of the tile has already been flipped
 			return 1;//alert('This tile has already been flipped');//alert pop up - will end function OR --- return; ----
 		} else if(bombBoard[rowIndex][columnIndex] === 'B') {//if the flipped tile is a bomb
-			playerBoard[rowIndex][columnIndex] = 'B';//Place bomb to the player board
+			this._playerBoard[rowIndex][columnIndex] = 'B';//Place bomb to the player board
 		} else {
-			playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(rowIndex, columnIndex);//setting guessed tile to number of surrounding bombs
+			this._playerBoard[rowIndex][columnIndex] = this.getNumberOfNeighbourBombs(rowIndex, columnIndex);//setting guessed tile to number of surrounding bombs
 			//if a cell is not a bomb, it should place the number of bombs on playerBoard
 		}
 		return;
