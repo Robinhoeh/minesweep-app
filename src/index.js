@@ -20,19 +20,58 @@ class Board{
 		} else {
 			this._playerBoard[rowIndex][columnIndex] = this.getNumberOfNeighbourBombs(rowIndex, columnIndex);//setting guessed tile to number of surrounding bombs
 			//if a cell is not a bomb, it should place the number of bombs on playerBoard
-		}
-		return;
+		} 
+		return this._numberOfTiles--;
+	}
+
+
+	getNumberOfNeighbourBombs (rowIndex, columnIndex) {
+		const neighbourOffSets = [ //8 possible directions you could use
+			[-1, -1], //offset by row then column relative to BOMB
+			[-1, 0], 
+			[-1, 1], 
+			[0, -1], 
+			[0, 1], 
+			[1, -1], 
+			[1, 0], 
+			[1, 1], 
+		];
+
+		const numberOfRows = bombBoard.length//retrieve dimensions of the board - in case BOMB is on edge of board
+		const numberOfColumns = bombBoard[0].length;//same as above - find number of columns - [0] takes you outside of the initial array
+		let numberOfBombs = 0;//stores number of bombs ADJACENT to flipped tile
+
+
+		//Below provides position of the neighbouring squares
+
+
+		//nehgbouroffSets function is counting the number of bombs adjacent to a given cell
+
+		neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1] -  computes the col and row indices for the neighbor you're trying to check
+			const neighbourRowIndex = rowIndex + offSet[0];//store the row position
+			const neighbourColumnIndex = columnIndex + offSet[1];//store index position
+			
+			if (//checks if the tiles/indices are within the allowable BOUNDS of the board
+				neighbourRowIndex >= 0 && 
+				neighbourRowIndex < numberOfRows && 
+				neighbourColumnIndex >= 0 && 
+				neighbourColumnIndex < numberOfColumns
+			) 
+			{
+			if (bombBoard[neighbourRowIndex][neighbourColumnIndex] === 'B' ) {//Checks if neighbour of CURRENT cell has a bomb
+				this._numberOfBombs++;//if YES, add 1 to bombCount
+			}
+			}
+			return this._numberOfBombs;//otherwise do nothing
+		});
+	//Check if neighbouring tiles are off grid or don't exist
+	}
+
+	hasSafeTiles() {
+		
 	}
 
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -99,50 +138,6 @@ console.log(generateBombBoard (3, 21, 7) );//calls function, generates bombs and
 //=======Displaying number of bombs adjacent to flipped tile
 
 
-
-const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
-	const neighbourOffSets = [ //8 possible directions you could use
-		[-1, -1], //offset by row then column relative to BOMB
-		[-1, 0], 
-		[-1, 1], 
-		[0, -1], 
-		[0, 1], 
-		[1, -1], 
-		[1, 0], 
-		[1, 1], 
-	];
-
-
-
-	const numberOfRows = bombBoard.length//retrieve dimensions of the board - in case BOMB is on edge of board
-	const numberOfColumns = bombBoard[0].length;//same as above - find number of columns - [0] takes you outside of the initial array
-	let numberOfBombs = 0;//stores number of bombs ADJACENT to flipped tile
-
-
-	//Below provides position of the neighbouring squares
-
-
-	//nehgbouroffSets function is counting the number of bombs adjacent to a given cell
-
-	neighbourOffSets.forEach(offSet => {//runs through each nested array in neighbourOffset ie [-1, -1] -  computes the col and row indices for the neighbor you're trying to check
-		const neighbourRowIndex = rowIndex + offSet[0];//store the row position
-		const neighbourColumnIndex = columnIndex + offSet[1];//store index position
-		
-		if (//checks if the tiles/indices are within the allowable BOUNDS of the board
-			neighbourRowIndex >= 0 && 
-			neighbourRowIndex < numberOfRows && 
-			neighbourColumnIndex >= 0 && 
-			neighbourColumnIndex < numberOfColumns
-		) 
-		{
-		if (bombBoard[neighbourRowIndex][neighbourColumnIndex] === 'B' ) {//Checks if neighbour of CURRENT cell has a bomb
-			numberOfBombs++;//if YES, add 1 to bombCount
-		}
-		}
-		return numberOfBombs;//otherwise do nothing
-	});
-//Check if neighbouring tiles are off grid or don't exist
-}
 
 
 
