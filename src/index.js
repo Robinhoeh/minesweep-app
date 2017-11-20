@@ -69,10 +69,24 @@ class Board{
 
 	//Way of letting user know they WON and when all non bomb tiles are flipped
 	hasSafeTiles() {
-		return this._numberOfTiles !== this._numberOfBombs;
+		return this._numberOfTiles !== this._numberOfBombs;//returns TRUE cuz statement is TRUTHY, otherwise false
 	}
 
+	static generatePlayerBoard (numberOfRows,numberOfColumns) {//static class method
+		let board = [];// new empty array 
+		for (let i = 0; i < numberOfRows; i++) {//each time this loop runs - new row array created
+			let row = [];//new empty array 
+			for (let j = 0; j < numberOfColumns; j++) {//creates all the columns for previous row created
+				row.push(' ');//each space represents a column - push as many spaces to the row as number of columns that are passed
+			}
+			board.push(row);//pushing row array to board array once column loop is complete
+		}
+		return board;
+	}
+	console.log( generatePlayerBoard(3, 3) );//calling this will display the size of board desired
+
 }
+
 
 
 
@@ -86,19 +100,6 @@ class Board{
 //   push the new row into the list of rows for the board
 // }
 
-const generatePlayerBoard = (numberOfRows,numberOfColumns) => {
-	let board = [];// new empty array 
-	for (let i = 0; i < numberOfRows; i++) {//each time this loop runs - new row array created
-		let row = [];//new empty array 
-		for (let j = 0; j < numberOfColumns; j++) {//creates all the columns for previous row created
-			row.push(' ');//each space represents a column - push as many spaces to the row as number of columns that are passed
-		}
-		board.push(row);//pushing row array to board array once column loop is complete
-	}
-	return board;
-}
-
-console.log( generatePlayerBoard(3, 3) );//calling this will display the size of board desired
 
 
 
@@ -157,15 +158,15 @@ So the first one would evaluate to rowIndex + (-1)  or just rowIndex - 1, which 
 //==========printing game board with randomly placed bombs
 
 
-const printBoard = (board) => {//board is new param
+print(board) {//board is new param
 	console.log( board.map(row => row.join(' | ') ).join('\n') );//map over row array and inject | to each row
 }// slash n is a line break
 
 //printBoard is joining each space with a pipe, 
 //then joining each row to the other rows depending on the amount of columns
 
-let playerBoard = generatePlayerBoard(3, 4);
-let bombBoard = generateBombBoard(3, 4, 5);
+this._playerBoard = generatePlayerBoard(3, 4);
+this._bombBoard = generateBombBoard(3, 4, 5);
 
 
 const playGame = () => {
