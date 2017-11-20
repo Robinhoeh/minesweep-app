@@ -2,10 +2,28 @@ class Board{
 	constructor(numberOfRows, numberOfColumns, numberOfBombs) { //constructor params represent, size of board and number of bombs
 		this._numberOfBombs = numberOfBombs;
 		this._numberOfTiles = numberOfRows * numberOfColumns;//instance represents size of board and if game is over yet at end of each users turn
-		this._playerBoard = generatePlayerBoard(numberOfRows, numberOfColumns);
+		this._playerBoard = Board.generatePlayerBoard(numberOfRows, numberOfColumns);
+		this._bombBoard = Board.generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs);
 	}
-}
 
+	//playerBoard getter method
+	get playerBoard() {
+		return this._playerBoard;
+	}
+
+	flipTile = (rowIndex, columnIndex) => {//playerBoard will update, bombBoard will check location of bombs, rowIndex/Column are location we are flipping over
+		if (playerBoard[rowIndex][columnIndex] !== ' ') {//if current position of the tile has already been flipped
+			return 1;//alert('This tile has already been flipped');//alert pop up - will end function OR --- return; ----
+		} else if(bombBoard[rowIndex][columnIndex] === 'B') {//if the flipped tile is a bomb
+			playerBoard[rowIndex][columnIndex] = 'B';//Place bomb to the player board
+		} else {
+			playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(rowIndex, columnIndex);//setting guessed tile to number of surrounding bombs
+			//if a cell is not a bomb, it should place the number of bombs on playerBoard
+		}
+		return;
+	}
+
+}
 
 
 
@@ -126,17 +144,7 @@ const getNumberOfNeighbourBombs = (bombBoard, rowIndex, columnIndex) => {
 }
 
 
-const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {//playerBoard will update, bombBoard will check location of bombs, rowIndex/Column are location we are flipping over
-	if (playerBoard[rowIndex][columnIndex] !== ' ') {//if current position of the tile has already been flipped
-		return 1;//alert('This tile has already been flipped');//alert pop up - will end function OR --- return; ----
-	} else if(bombBoard[rowIndex][columnIndex] === 'B') {//if the flipped tile is a bomb
-		playerBoard[rowIndex][columnIndex] = 'B';//Place bomb to the player board
-	} else {
-		playerBoard[rowIndex][columnIndex] = getNumberOfNeighbourBombs(bombBoard, rowIndex, columnIndex);//setting guessed tile to number of surrounding bombs
-		//if a cell is not a bomb, it should place the number of bombs on playerBoard
-	}
-	return;
-}
+
 
 /*
 
