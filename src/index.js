@@ -1,3 +1,22 @@
+class Game {
+	//When user creates instance of a board, they will be asked to specify size and number of bombs on board
+	constructor(numberOfRows, numberOfColumns, numberOfBombs) {
+		this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
+	}
+
+	playMove(rowIndex, columnIndex) {//includes all functionality - flip tile, check if user got bomb, allow to keep playing until lose
+
+	}
+
+	.playMove(this._flipTile())
+}
+
+
+
+
+
+// Turning functions into methods decreases amount of manual code being written
+//Board class now creates boards and prints them all at once
 class Board{
 	constructor(numberOfRows, numberOfColumns, numberOfBombs) { //constructor params represent, size of board and number of bombs
 		this._numberOfBombs = numberOfBombs;
@@ -122,8 +141,6 @@ class Board{
 // console.log(generateBombBoard (3, 21, 7) );//calls function, generates bombs and places randomly
 
 }
-
-
 
 
 /*
