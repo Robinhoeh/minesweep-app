@@ -67,8 +67,9 @@ class Board{
 	//Check if neighbouring tiles are off grid or don't exist
 	}
 
+	//Way of letting user know they WON and when all non bomb tiles are flipped
 	hasSafeTiles() {
-		
+		return this._numberOfTiles !== this._numberOfBombs;
 	}
 
 }
