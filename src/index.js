@@ -5,14 +5,20 @@ class Game {
 	}
 
 	playMove(rowIndex, columnIndex) {//includes all functionality - flip tile, check if user got bomb, allow to keep playing until lose
-
+		this._board.flipTile(rowIndex, columnIndex);
 	}
 
-	.playMove(this._flipTile())
+	//If flipped tile has bomb - game over
+	if (this._board.playerBoard[rowIndex][columnIndex] === "B") {
+		alert('Game over for ya...');
+		this._board.print();
+	} else if (this._board.hasSafeTiles[rowIndex][columnIndex]) {//checks if NO safe tiles left
+		alert('You won!');
+	} else {
+			console.log('Current Board: ');//user keeps playing
+	}
+
 }
-
-
-
 
 
 // Turning functions into methods decreases amount of manual code being written
@@ -183,6 +189,10 @@ flipTile(playerBoard, bombBoard, 2, 1);//4 params cuz fliptile takes 4 above
 console.log('Updated player board: ');
 
 printBoard(playerBoard);
+
+const g = new Game(3, 3, 3);
+
+g.playMove(1,0);
 
 //=======Why are we incorporating class structure to this project?
 
