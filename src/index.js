@@ -6,8 +6,6 @@ class Game {
 
 	playMove(rowIndex, columnIndex) {//includes all functionality - flip tile, check if user got bomb, allow to keep playing until lose
 		this._board.flipTile(rowIndex, columnIndex);
-	}
-
 	//If flipped tile has bomb - game over
 	if (this._board.playerBoard[rowIndex][columnIndex] === "B") {
 		alert('Game over for ya...');
@@ -18,6 +16,8 @@ class Game {
 			console.log('Current Board: ');//user keeps playing
 	}
 
+	}
+	
 }
 
 
